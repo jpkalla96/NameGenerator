@@ -1,3 +1,3 @@
 # NameGenerator
 
-Das ist ein Namengenerator. Die Bediehnsprache des Programms ist Englisch.
+Das ist ein Namengenerator. Die Bediensprache des Programms ist Englisch.
