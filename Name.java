@@ -2,13 +2,13 @@ public class Name {
     private String name;
     private boolean isMale;
 
-    public Name(String name, String gender) {
+    public Name(String name, char gender) {
         this.name = name;
         switch (gender) {
-            case "male":
+            case 'm':
                 this.isMale = true;
                 break;
-            case "female":
+            case 'f':
                 this.isMale = false;
                 break;
             default:

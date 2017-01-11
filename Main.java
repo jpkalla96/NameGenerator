@@ -23,12 +23,12 @@ public class Main {
 
         File file = new File("C:\\Users\\adria\\IdeaProjects\\Namengenerator\\namen.txt");
         Scanner input = new Scanner(file);
-        List<Name> namen = new ArrayList<>();
+        List<Name> namen = new ArrayList();
         while (input.hasNextLine()) {
             String line = input.nextLine();
             if (line != ""){
                 String[] namenInput = line.split(" ");
-                namen.add(new Name(namenInput[0], namenInput[1]));
+                namen.add(new Name(namenInput[0], namenInput[1].charAt(0)));
             }
         }
         for(int i = 0; i < namen.size(); i++){
