@@ -9,23 +9,53 @@ import java.io.FileNotFoundException;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        boolean isMale = true;
+        boolean isMale;
         String lastName = "Gniwotta";
-        boolean lastNameAlliteration = true;
+        boolean lastNameAlliteration = false;
         boolean lastNameUse = false;
-        char firstLetter = 'A';         //if you set lastNameUse to "true", your input for your preferred first letter is automatically ignored
-        boolean firstLetterUse = true;
-        int maxLength = 8;
-        boolean maxLengthUse = true;
-        int minLength = 3;
-        boolean minLengthUse = false;
+        char firstLetter = 'A';
+        boolean firstLetterUse;
+        int maxLength = 100;
+        boolean maxLengthUse;
+        int minLength = 0;
+        boolean minLengthUse;
 
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("What gender should the name be? Please enter true for male and false for female.");
+        isMale = userInput.nextBoolean();
+        System.out.println("Do you have a preferred first letter? Please answer with true or false.");
+        firstLetterUse = userInput.nextBoolean();
+        if (firstLetterUse){
+            System.out.println("Does your preferred first letter depend on your last name? Please answer with true or false.");
+            lastNameUse = userInput.nextBoolean();
+            if (lastNameUse){
+                System.out.println("Please enter your last name.");
+                lastName = userInput.next();
+                System.out.println("Do you want the name to be an alliteration of your last name? Please answer with true or false.");
+                lastNameAlliteration = userInput.nextBoolean();
+            }else{
+                System.out.println("What is your preferred first letter?");
+                firstLetter = userInput.next().toUpperCase().charAt(0);
+            }
+        }
+        System.out.println("Do you have a maximum length for the name? Please answer with true or false.");
+        maxLengthUse = userInput.nextBoolean();
+        if (maxLengthUse){
+            System.out.println("What is your maximum length? Please answer as an int.");
+            maxLength = userInput.nextInt();
+        }
+        System.out.println("Do you have a minimum length for the name? Please answer with true or false.");
+        minLengthUse = userInput.nextBoolean();
+        if (minLengthUse){
+            System.out.println("What is your minimum length? Please answer as an int.");
+            minLength = userInput.nextInt();
+        }
 
         File file = new File("C:\\Users\\adria\\IdeaProjects\\Namengenerator\\namen.txt");
-        Scanner input = new Scanner(file);
+        Scanner fileInput = new Scanner(file);
         List<Name> namen = new ArrayList();
-        while (input.hasNextLine()) {
-            String line = input.nextLine();
+        while (fileInput.hasNextLine()) {
+            String line = fileInput.nextLine();
             if (line != ""){
                 String[] namenInput = line.split(" ");
                 namen.add(new Name(namenInput[0], namenInput[1].charAt(0)));
@@ -44,6 +74,7 @@ public class Main {
                 }
             }
         }
-        input.close();
+        fileInput.close();
+        userInput.close();
     }
 }
