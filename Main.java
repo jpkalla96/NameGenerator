@@ -51,7 +51,7 @@ public class Main {
             minLength = userInput.nextInt();
         }
 
-        File file = new File("C:\\Users\\adria\\IdeaProjects\\Namengenerator\\namen.txt");
+        File file = new File(".\\namen.txt");
         Scanner fileInput = new Scanner(file);
         List<Name> namen = new ArrayList();
         while (fileInput.hasNextLine()) {
